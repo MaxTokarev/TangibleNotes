@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_gray">
+
+    <ImageButton
+        android:id="@+id/ibBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_button"
+        android:backgroundTint="@color/grey_darker"
+        android:contentDescription="@null"
+        android:padding="10dp"
+        android:src="@drawable/ic_iconfinder_icon_ios7_arrow_back_211686"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_button"
+        app:backgroundTint="@color/grey_darker"
+        android:fontFamily="@font/font_sf_pro_display_bold"
+        android:maxWidth="0dp"
+        android:maxHeight="0dp"
+        android:padding="10dp"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:autofillHints="no"
+        android:background="@null"
+        android:ems="10"
+        android:fontFamily="@font/font_sf_pro_display_bold"
+        android:hint="@string/title"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSave"
+        tools:text="@tools:sample/lorem[10]" />
+
+    <EditText
+        android:id="@+id/et_description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:autofillHints="no"
+        android:background="@null"
+        android:ems="10"
+        android:gravity="top|start"
+        android:hint="@string/type_something"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_title"
+        tools:text="@tools:sample/lorem[100]" />
+</androidx.constraintlayout.widget.ConstraintLayout>
