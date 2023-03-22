@@ -1,5 +1,8 @@
 plugins {
     id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'
 }
 
@@ -8,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.tangible.notes"
+        applicationId "com.maksix.notestones"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -27,50 +30,84 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     def lifecycle_version = "2.3.1"
-    def arch_version = "2.1.0"
 
     // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
 
     //Room
     implementation "androidx.room:room-runtime:2.2.6"
-    annotationProcessor "androidx.room:room-compiler:2.2.6"
-    implementation "androidx.room:room-rxjava2:2.2.6"
+    kapt "androidx.room:room-compiler:2.2.6"
+    implementation "androidx.room:room-ktx:2.2.6"
 
-    //rxjava
-    implementation "io.reactivex.rxjava2:rxjava:2.2.13"
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    //Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
 
     //DI
-    implementation 'com.google.dagger:hilt-android:2.34-beta'
-    annotationProcessor 'com.google.dagger:hilt-compiler:2.34-beta'
+    implementation 'com.google.dagger:dagger:2.33'
+    kapt 'com.google.dagger:dagger-compiler:2.33'
 
     //Hilt
     implementation "com.google.dagger:hilt-android:${hilt_version}"
-    annotationProcessor "com.google.dagger:hilt-android-compiler:${hilt_version}"
+    kapt "com.google.dagger:hilt-android-compiler:${hilt_version}"
     implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
-    annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-beta01'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-beta01'
 
     //time
     implementation 'com.jakewharton.threetenabp:threetenabp:1.3.0'
+
+    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl:4.3.0"
+    implementation "com.hannesdorfmann:adapterdelegates4-kotlin-dsl-viewbinding:4.3.0"
+
+    //Fast Adapter
+    def fast_adapter_version = "5.4.0"
+    implementation "com.mikepenz:fastadapter:${fast_adapter_version}"
+    implementation "com.mikepenz:fastadapter-extensions-expandable:${fast_adapter_version}"
+    implementation "com.mikepenz:fastadapter-extensions-binding:${fast_adapter_version}"
+    // view binding helpers
+    implementation "com.mikepenz:fastadapter-extensions-diff:${fast_adapter_version}"
+    // diff util helpers
+    implementation "com.mikepenz:fastadapter-extensions-drag:${fast_adapter_version}"
+    // drag support
+    implementation "com.mikepenz:fastadapter-extensions-paged:${fast_adapter_version}"
+    // paging support
+    implementation "com.mikepenz:fastadapter-extensions-scroll:${fast_adapter_version}"
+    // scroll helpers
+    implementation "com.mikepenz:fastadapter-extensions-swipe:${fast_adapter_version}"
+    // swipe support
+    implementation "com.mikepenz:fastadapter-extensions-ui:${fast_adapter_version}"
+    // pre-defined ui components
+    implementation "com.mikepenz:fastadapter-extensions-utils:${fast_adapter_version}"
+    // needs the `expandable`, `drag` and `scroll` extension.
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
