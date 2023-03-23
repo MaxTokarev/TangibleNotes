@@ -29,7 +29,7 @@ This is a note-taking Android app that uses modern Android development technique
 - Android SDK 26 or later
 
 ## Installation
-- Clone the repository: git clone https://github.com/your_username/your_project_name.git
+- Clone the repository: git clone https://github.com/MaxTokarev/TangibleNotes
 - Open the project in Android Studio.
 - Build and run the app on an emulator or a physical device.
 
