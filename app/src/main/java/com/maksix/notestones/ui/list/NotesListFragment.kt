@@ -20,7 +20,7 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-import ru.datumgroup.smartlighting.other.extension.launchWhenStarted
+import com.maksix.notestones.other.extension.launchWhenStarted
 
 @AndroidEntryPoint
 class NotesListFragment : Fragment(R.layout.fragment_note_list) {

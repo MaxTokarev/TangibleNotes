@@ -1,4 +1,4 @@
-package ru.datumgroup.smartlighting.other.extension
+package com.maksix.notestones.other.extension
 
 import android.content.Context
 import android.view.View

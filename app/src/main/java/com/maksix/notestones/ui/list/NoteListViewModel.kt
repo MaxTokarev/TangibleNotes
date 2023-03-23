@@ -8,7 +8,10 @@ import com.maksix.notestones.common.ui.State
 import com.maksix.notestones.domain.usecases.notes.observe.IObserveNotesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,7 +27,7 @@ class NoteListViewModel @Inject constructor(
     init {
         viewModelScope.launch(IO) {
             observeNotesUseCase.execute()
-                .catch {  }
+                .catch { }
                 .map { notes ->
                     notes.map { note ->
                         val text = buildString {

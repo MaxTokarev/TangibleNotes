@@ -16,7 +16,7 @@ import com.maksix.notestones.ui.add.AddNoteFragment
 import com.maksix.notestones.ui.edit.EditNoteFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-import ru.datumgroup.smartlighting.other.extension.launchWhenStarted
+import com.maksix.notestones.other.extension.launchWhenStarted
 import javax.inject.Inject
 
 @AndroidEntryPoint

@@ -14,8 +14,7 @@ import com.maksix.notestones.other.extension.showToast
 import com.maksix.notestones.ui.add.AddNoteViewModel.Event
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-import ru.datumgroup.smartlighting.other.extension.launchWhenStarted
-import javax.inject.Inject
+import com.maksix.notestones.other.extension.launchWhenStarted
 
 @AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
