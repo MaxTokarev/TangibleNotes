@@ -1,14 +1,14 @@
 package com.maksix.notestones.data.local
 
-import com.maksix.notestones.data.db.note_list.NoteListDao
-import com.maksix.notestones.models.entity.NoteEntity
+import com.maksix.notestones.data.db.notes.NoteListDao
+import com.maksix.notestones.common.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import javax.inject.Inject
 
-class NoteLocalDataSource @Inject constructor(
+class NotesLocalDataSourceImpl @Inject constructor(
     private val notesDao: NoteListDao
-) : INotesLocalDataSource {
+) : NotesLocalDataSource {
     override fun observeNotes(): Flow<List<NoteEntity>> {
         return notesDao.observeNotes().distinctUntilChanged()
     }
@@ -18,9 +18,7 @@ class NoteLocalDataSource @Inject constructor(
     }
 
     override fun getNoteById(noteId: Int): Flow<NoteEntity> {
-        return notesDao.getFlowById(noteId).distinctUntilChanged{ noteEntity: NoteEntity, noteEntity1: NoteEntity ->
-            false
-        }
+        return notesDao.getFlowById(noteId)
     }
 
     override suspend fun updateNote(note: NoteEntity) {

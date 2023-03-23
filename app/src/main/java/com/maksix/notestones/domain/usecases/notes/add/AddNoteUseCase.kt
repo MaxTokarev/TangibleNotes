@@ -1,12 +1,15 @@
 package com.maksix.notestones.domain.usecases.notes.add
 
-import com.maksix.notestones.domain.repositories.INoteRepository
-import com.maksix.notestones.models.domain.Note
+import com.maksix.notestones.common.domain.usecases.BaseUseCase
+import com.maksix.notestones.domain.repositories.NoteRepository
+import com.maksix.notestones.domain.model.Note
 import javax.inject.Inject
 
-class AddNoteUseCase @Inject constructor(
-    private val repository: INoteRepository
-): IAddNoteUseCase {
+interface AddNoteUseCase : BaseUseCase.SingleIn<Note>
+
+class AddNoteUseCaseImpl @Inject constructor(
+    private val repository: NoteRepository
+): AddNoteUseCase {
     override suspend fun execute(data: Note) {
         repository.addNote(data)
     }

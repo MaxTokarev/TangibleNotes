@@ -9,12 +9,12 @@ import com.maksix.notestones.R
 import com.maksix.notestones.databinding.FragmentAddNoteBinding
 import com.maksix.notestones.other.delegates.viewBinding
 import com.maksix.notestones.other.extension.hideKeyboard
+import com.maksix.notestones.other.extension.launchWhenStarted
 import com.maksix.notestones.other.extension.onBackPressed
 import com.maksix.notestones.other.extension.showToast
 import com.maksix.notestones.ui.add.AddNoteViewModel.Event
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-import com.maksix.notestones.other.extension.launchWhenStarted
 
 @AndroidEntryPoint
 class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
@@ -28,10 +28,7 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
         with(binding) {
             btnSave.setOnClickListener {
-                viewModel.onSaveClicked(
-                    getTitle(),
-                    getDescription()
-                )
+                viewModel.onSaveClicked(getTitle(), getDescription())
             }
             ibBack.setOnClickListener { requireActivity().onBackPressed() }
         }
@@ -51,5 +48,4 @@ class AddNoteFragment : Fragment(R.layout.fragment_add_note) {
 
     private fun getTitle(): String = binding.etTitle.text.toString()
     private fun getDescription(): String = binding.etDescription.text.toString()
-
 }

@@ -13,6 +13,7 @@ import com.maksix.notestones.common.ui.State
 import com.maksix.notestones.databinding.FragmentNoteListBinding
 import com.maksix.notestones.other.Navigator
 import com.maksix.notestones.other.delegates.viewBinding
+import com.maksix.notestones.other.extension.launchWhenStarted
 import com.maksix.notestones.ui.add.AddNoteFragment
 import com.maksix.notestones.ui.detail.NoteDetailFragment
 import com.mikepenz.fastadapter.FastAdapter
@@ -20,7 +21,6 @@ import com.mikepenz.fastadapter.adapters.ItemAdapter
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.onEach
-import com.maksix.notestones.other.extension.launchWhenStarted
 
 @AndroidEntryPoint
 class NotesListFragment : Fragment(R.layout.fragment_note_list) {
@@ -37,12 +37,11 @@ class NotesListFragment : Fragment(R.layout.fragment_note_list) {
 
         binding.rvNotes.adapter = fastAdapter
         binding.rvNotes.layoutManager = StaggeredGridLayoutManager(2, VERTICAL)
-        fastAdapter.onClickListener =
-            { _, _, noteListSmallItem, _ ->
-                val fragment = NoteDetailFragment.newInstance(noteListSmallItem.id)
-                Navigator(parentFragmentManager).routeTo(fragment)
-                false
-            }
+        fastAdapter.onClickListener = { _, _, noteListSmallItem, _ ->
+            val fragment = NoteDetailFragment.newInstance(noteListSmallItem.id)
+            Navigator(parentFragmentManager).routeTo(fragment)
+            false
+        }
 
         binding.fabAddNote.setOnClickListener {
             val fragment = AddNoteFragment()
@@ -61,8 +60,9 @@ class NotesListFragment : Fragment(R.layout.fragment_note_list) {
                 binding.rvNotes.isVisible = false
                 binding.tvEmptyNotes.isVisible = true
             }
+
             State.Loading -> showLoading()
-            is State.Main -> {
+            is State.Content -> {
                 hideLoading()
                 binding.rvNotes.isVisible = true
                 binding.tvEmptyNotes.isVisible = false

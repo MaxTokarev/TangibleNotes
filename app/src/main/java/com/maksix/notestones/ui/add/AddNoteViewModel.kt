@@ -3,11 +3,10 @@ package com.maksix.notestones.ui.add
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maksix.notestones.R
-import com.maksix.notestones.domain.usecases.notes.add.IAddNoteUseCase
-import com.maksix.notestones.domain.usecases.notes.get.IGetNoteUseCase
-import com.maksix.notestones.domain.usecases.notes.update.IUpdateNoteUseCase
-import com.maksix.notestones.models.domain.Note
-import dagger.assisted.AssistedFactory
+import com.maksix.notestones.domain.usecases.notes.add.AddNoteUseCase
+import com.maksix.notestones.domain.usecases.notes.get.GetNoteUseCase
+import com.maksix.notestones.domain.usecases.notes.update.UpdateNoteUseCase
+import com.maksix.notestones.domain.model.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -17,9 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AddNoteViewModel @Inject constructor(
-    private val addNoteUseCase: IAddNoteUseCase,
-    private val getNoteUseCase: IGetNoteUseCase,
-    private val updateNoteUseCase: IUpdateNoteUseCase
+    private val addNoteUseCase: AddNoteUseCase,
 ) : ViewModel() {
 
     private val _uiEvents = Channel<Event>(Channel.BUFFERED)

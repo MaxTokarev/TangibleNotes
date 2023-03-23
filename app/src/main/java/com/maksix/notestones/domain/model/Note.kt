@@ -1,4 +1,4 @@
-package com.maksix.notestones.models.domain
+package com.maksix.notestones.domain.model
 
 class Note(
     val id: Int = 0,

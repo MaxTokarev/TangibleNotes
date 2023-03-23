@@ -4,8 +4,8 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.maksix.notestones.data.db.converters.OffsetDateTimeConverter
-import com.maksix.notestones.data.db.note_list.NoteListDao
-import com.maksix.notestones.models.entity.NoteEntity
+import com.maksix.notestones.data.db.notes.NoteListDao
+import com.maksix.notestones.common.entity.NoteEntity
 
 @Database(
     entities = [
@@ -15,6 +15,6 @@ import com.maksix.notestones.models.entity.NoteEntity
     version = 2
 )
 @TypeConverters(OffsetDateTimeConverter::class)
-abstract class Database : RoomDatabase() {
+abstract class NotesDatabase : RoomDatabase() {
     abstract fun getNoteListDao(): NoteListDao
 }

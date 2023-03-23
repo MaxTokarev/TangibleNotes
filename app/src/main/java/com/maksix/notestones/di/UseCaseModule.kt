@@ -1,13 +1,13 @@
 package com.maksix.notestones.di
 
 import com.maksix.notestones.domain.usecases.notes.add.AddNoteUseCase
-import com.maksix.notestones.domain.usecases.notes.add.IAddNoteUseCase
+import com.maksix.notestones.domain.usecases.notes.add.AddNoteUseCaseImpl
 import com.maksix.notestones.domain.usecases.notes.get.GetNoteUseCase
-import com.maksix.notestones.domain.usecases.notes.get.IGetNoteUseCase
-import com.maksix.notestones.domain.usecases.notes.observe.IObserveNotesUseCase
+import com.maksix.notestones.domain.usecases.notes.get.GetNoteUseCaseImpl
 import com.maksix.notestones.domain.usecases.notes.observe.ObserveNotesUseCase
-import com.maksix.notestones.domain.usecases.notes.update.IUpdateNoteUseCase
+import com.maksix.notestones.domain.usecases.notes.observe.ObserveNotesUseCaseImpl
 import com.maksix.notestones.domain.usecases.notes.update.UpdateNoteUseCase
+import com.maksix.notestones.domain.usecases.notes.update.UpdateNoteUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,14 +18,14 @@ import dagger.hilt.components.SingletonComponent
 abstract class UseCaseModule {
 
     @Binds
-    abstract fun bindObserveNotesUseCase(useCase: ObserveNotesUseCase): IObserveNotesUseCase
+    abstract fun bindObserveNotesUseCase(useCase: ObserveNotesUseCaseImpl): ObserveNotesUseCase
 
     @Binds
-    abstract fun bindAddNoteUseCase(useCase: AddNoteUseCase): IAddNoteUseCase
+    abstract fun bindAddNoteUseCase(useCase: AddNoteUseCaseImpl): AddNoteUseCase
 
     @Binds
-    abstract fun bindGetNoteUseCase(useCase: GetNoteUseCase): IGetNoteUseCase
+    abstract fun bindGetNoteUseCase(useCase: GetNoteUseCaseImpl): GetNoteUseCase
 
     @Binds
-    abstract fun binUpdateNoteUseCase(useCase: UpdateNoteUseCase): IUpdateNoteUseCase
+    abstract fun binUpdateNoteUseCase(useCase: UpdateNoteUseCaseImpl): UpdateNoteUseCase
 }

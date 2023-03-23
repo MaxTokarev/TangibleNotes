@@ -1,11 +1,11 @@
-package com.maksix.notestones.data.db.note_list
+package com.maksix.notestones.data.db.notes
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.maksix.notestones.common.data.BaseDao
-import com.maksix.notestones.models.entity.NoteEntity
+import com.maksix.notestones.common.entity.NoteEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao

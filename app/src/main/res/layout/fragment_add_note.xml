@@ -16,9 +16,9 @@
         android:contentDescription="@null"
         android:padding="10dp"
         android:src="@drawable/ic_iconfinder_icon_ios7_arrow_back_211686"
-        android:tint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"
@@ -30,7 +30,6 @@
         android:fontFamily="@font/font_sf_pro_display_bold"
         android:maxWidth="0dp"
         android:maxHeight="0dp"
-        android:padding="10dp"
         android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="@color/white"

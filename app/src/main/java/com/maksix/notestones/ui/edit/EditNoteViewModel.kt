@@ -3,9 +3,9 @@ package com.maksix.notestones.ui.edit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maksix.notestones.R
-import com.maksix.notestones.domain.usecases.notes.get.IGetNoteUseCase
-import com.maksix.notestones.domain.usecases.notes.update.IUpdateNoteUseCase
-import com.maksix.notestones.models.domain.Note
+import com.maksix.notestones.domain.usecases.notes.get.GetNoteUseCase
+import com.maksix.notestones.domain.usecases.notes.update.UpdateNoteUseCase
+import com.maksix.notestones.domain.model.Note
 import com.maksix.notestones.ui.add.AddNoteViewModel
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
@@ -13,15 +13,14 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 
 class EditNoteViewModel @AssistedInject constructor(
     @Assisted private val noteId: Int,
-    private val getNoteUseCase: IGetNoteUseCase,
-    private val updateNoteUseCase: IUpdateNoteUseCase
+    private val getNoteUseCase: GetNoteUseCase,
+    private val updateNoteUseCase: UpdateNoteUseCase
 ) : ViewModel() {
 
     private val _note = MutableStateFlow<Note?>(null)

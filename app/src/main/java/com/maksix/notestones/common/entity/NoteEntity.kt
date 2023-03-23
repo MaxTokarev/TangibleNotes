@@ -1,4 +1,4 @@
-package com.maksix.notestones.models.entity
+package com.maksix.notestones.common.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
