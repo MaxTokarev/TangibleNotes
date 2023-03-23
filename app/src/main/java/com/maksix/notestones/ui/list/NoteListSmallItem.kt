@@ -1,6 +1,5 @@
 package com.maksix.notestones.ui.list
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.maksix.notestones.R
@@ -26,7 +25,6 @@ class NoteListSmallItem(
 
     override fun bindView(binding: ItemNoteListSmallBinding, payloads: List<Any>) {
         binding.tvDateCreated.text = createdAt
-        Log.d("TAG", "bindView: $text")
         binding.tvDescription.text = text
         binding.conte.setCardBackgroundColor(backgroundColor)
     }

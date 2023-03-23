@@ -1,7 +1,6 @@
 package com.maksix.notestones.ui.list
 
 import android.content.res.Resources
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.maksix.notestones.common.ui.State
@@ -35,12 +34,10 @@ class NoteListViewModel @Inject constructor(
                             appendLine()
                             append(note.description)
                         }
-                        Log.d("TAG", "$text: ")
                         NoteListSmallItem(note.id, text, note.createdAt, getColor(note.backgroundColor))
                     }
                 }
                 .collect {
-                    Log.d("TAG", "setupList: $it")
                     if (it.isEmpty()) {
                         _uiState.emit(State.Empty)
                     } else {
